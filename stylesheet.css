@@ -1,7 +1,36 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background: #fff;
+    position: fixed;
+    height: 80px;
+    width: 100%;
+    top: 0;
+    filter: drop-shadow(0px 4px 8px rgba(89,87,87,0.3));
+}
+.header_img{
+    width: 182px;
+    float: left;
+}
+.info_form{
+    padding: 10px 25px;
+    margin: 15px;
+    right: 0;
+    position: fixed;
+    background: #ED7D31;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.form{
+    padding-top: 80px;
+}
 h1{
     text-align: center;
 }
-
 iframe {
     border: none;
     width: 100%;
