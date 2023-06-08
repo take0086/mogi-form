@@ -6,36 +6,46 @@
 		<title>申込フォーム</title>
 		<link rel="stylesheet" href="stylesheet.css">
 		<script>
-			function resizeIframe() {
+			function resizeIframe(height) {
 				var iframe = document.getElementById('formrun-iframe');
-				iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + 'px';
+				iframe.style.height = height + 'px';
 			}
-	
-			function handleFormChange() {
-				resizeIframe();
+
+			function handleFormLoad() {
+				var iframe = document.getElementById('formrun-iframe');
+				var message = {
+					type: 'formLoad',
+					height: iframe.contentWindow.document.documentElement.scrollHeight
+				};
+				iframe.contentWindow.postMessage(message, '*');
 			}
+
+			window.addEventListener('message', function (event) {
+				if (event.data.type === 'formResize') {
+					resizeIframe(event.data.height);
+				}
+			});
 		</script>
 	</head>
 	
-	<body onload="resizeIframe()">
+	<body>
 		<header>
 			<img class="header_img" src="https://www.financial-agency.com/lp/wp-content/uploads/2023/06/LOGO_MOGI_YOKO_BLUE.png" alt="">
 			<a class="info_form" href="">お問い合わせ</a>
 		</header>
-	
+
 		<div class="form">
 			<h1>申込フォーム</h1>
-			<iframe id="formrun-iframe" src="https://form.run/embed/@mogi-app-form?embed=direct" frameborder="0" scrolling="no" onload="resizeIframe()"></iframe>
-	
+			<iframe id="formrun-iframe" src="https://form.run/embed/@mogi-app-form?embed=direct" frameborder="0" scrolling="no"></iframe>
+
 			<div>
 				<p class="app_pdf"><a href="pdf/MOGI業務提携契約書_202212ドラフト_flo030210.pdf" download="MOGI業務提携契約書_202212ドラフト_flo030210.pdf" target="_blank"><u>アプリケーション利用規約のPDFファイルをダウンロード</u></a></p>
 				<p class="sarvice_pdf"><a href="pdf/業務提携に関する基本覚書(ひな形）_FA確認230427.pdf" download="業務提携に関する基本覚書(ひな形）_FA確認230427.pdf" target="_blank"><u>サービス利用規約のPDFファイルをダウンロード</u></a></p>
 			</div>
 		</div>
-	
+
 		<script>
-			window.addEventListener('resize', resizeIframe);
-			window.addEventListener('message', handleFormChange);
+			window.addEventListener('load', handleFormLoad);
 		</script>
 	</body>
 
