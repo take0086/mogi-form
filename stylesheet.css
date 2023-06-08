@@ -41,7 +41,7 @@ h1 {
 #formrun-iframe {
     border: none;
     width: 100%;
-    min-height: 500px; /* 最小の高さを指定 */
+    height: 500px; /* 初期の高さを指定 */
 }
 
 .app_pdf,
