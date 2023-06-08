@@ -8,7 +8,7 @@
 		<script>
 			function resizeIframe() {
 				var iframe = document.getElementById('formrun-iframe');
-				iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+				iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + 'px';
 			}
 		</script>
 	</head>
@@ -32,6 +32,7 @@
 		<script>
 			window.addEventListener('resize', resizeIframe);
 		</script>
+
 	</body>
 
 	
