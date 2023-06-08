@@ -4,10 +4,16 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>申込フォーム</title>
-			<link rel="stylesheet" href="stylesheet.css">
+		<link rel="stylesheet" href="stylesheet.css">
+		<script>
+			function resizeIframe() {
+				var iframe = document.getElementById('formrun-iframe');
+				iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+			}
+		</script>
 	</head>
-
-	<body>
+	
+	<body onload="resizeIframe()">
 		<header>
 			<img class="header_img" src="https://www.financial-agency.com/lp/wp-content/uploads/2023/06/LOGO_MOGI_YOKO_BLUE.png" alt="">
 			<a class="info_form" href="">お問い合わせ</a>
@@ -22,7 +28,12 @@
 				<p class="sarvice_pdf"><a href="pdf/業務提携に関する基本覚書(ひな形）_FA確認230427.pdf" download="業務提携に関する基本覚書(ひな形）_FA確認230427.pdf" target="_blank"><u>サービス利用規約のPDFファイルをダウンロード</u></a></p>
 			</div>
 		</div>
-		
+
+		<script>
+			window.addEventListener('resize', resizeIframe);
+		</script>
 	</body>
+
+	
 
 </html>
